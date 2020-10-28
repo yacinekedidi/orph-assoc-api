@@ -105,7 +105,6 @@ sqlparse==0.4.1
 systemd-python==234
 toml==0.10.1
 tornado==6.0.4
-unattended-upgrades==0.1
 uncompyle6==3.6.7
 urllib3==1.25.9
 virtualenv==20.0.34

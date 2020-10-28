@@ -33,7 +33,6 @@ httplib2==0.18.1
 idna==2.10
 ifaddr==0.1.6
 ipykernel==5.3.4
-ipython==7.18.1
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi==0.17.2

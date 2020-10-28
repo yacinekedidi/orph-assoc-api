@@ -64,7 +64,6 @@ pickleshare==0.7.5
 Pillow==7.2.0
 pipenv==2020.8.13
 prompt-toolkit==3.0.8
-protobuf==3.12.3
 psutil==5.7.2
 psycopg2==2.8.6
 psycopg2-binary==2.8.6

@@ -5,6 +5,8 @@ gender = (
     ("male", "male"),
     ("female", "female"),
 )
+
+
 class Family(models.Model):
     id = models.AutoField(primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -22,7 +24,7 @@ class Family(models.Model):
     income = models.IntegerField()
     home_status = models.CharField(max_length=20)
     home_owner = models.CharField(max_length=40)
-    health_status = models.CharField(max_length=100) 
+    health_status = models.CharField(max_length=100)
     deceased_parent_name = models.CharField(max_length=50)
     cause_of_death = models.CharField(max_length=100)
     sponsor_name = models.CharField(max_length=40, null=True)
@@ -44,7 +46,6 @@ class Orphan(models.Model):
     health_status = models.CharField(max_length=200)
 
 
-
 class Subsidy(models.Model):
     id = models.AutoField(primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -54,7 +55,8 @@ class Subsidy(models.Model):
     title = models.CharField(max_length=20, null=True, blank=True)
     description = models.CharField(max_length=200, null=True, blank=True)
     price_unit = models.IntegerField(null=True, blank=True)
-    gender = models.CharField(max_length=20, choices=gender, null=True, blank=True)
+    gender = models.CharField(
+        max_length=20, choices=gender, null=True, blank=True)
     age_min = models.CharField(max_length=3, null=True, blank=True)
     age_max = models.CharField(max_length=3, null=True, blank=True)
     status = models.CharField(max_length=20, null=True, blank=True)
@@ -101,7 +103,8 @@ class OrphanEducation(models.Model):
         (UNIVERSITY, 'University'),
         (GRADUATE, 'Graduate')
     ]
-    orphan_id = models.ForeignKey(Orphan, on_delete=models.CASCADE, related_name="orphan_education", null=True)
+    orphan_id = models.ForeignKey(
+        Orphan, on_delete=models.CASCADE, related_name="orphan_education", null=True)
     school = models.CharField(max_length=20)
     grade_year = models.CharField(
         max_length=3, choices=YEAR_IN_SCHOOL_CHOICES, null=False)
@@ -112,10 +115,9 @@ class OrphanEducation(models.Model):
     score_final = models.CharField(max_length=20, null=True, blank=True)
     updated = models.CharField(max_length=10, null=True, blank=True)
     academic_year = models.CharField(max_length=5)
+
     class Meta:
         unique_together = ("orphan_id", "academic_year")
-
-
 
 
 class family_subsidy(models.Model):
@@ -123,7 +125,8 @@ class family_subsidy(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     show = models.BooleanField(default=True)
-    family_id = models.ForeignKey(Family, on_delete=models.CASCADE, related_name="familySubsidy", null=True)
-    subsidy_id = models.ForeignKey(Subsidy, on_delete=models.CASCADE, related_name="subsidiesForFamilies", null=True)
+    family_id = models.ForeignKey(
+        Family, on_delete=models.CASCADE, related_name="familySubsidy", null=True)
+    subsidy_id = models.ForeignKey(
+        Subsidy, on_delete=models.CASCADE, related_name="subsidiesForFamilies", null=True)
     sub_amount = models.IntegerField(default=0)
-    

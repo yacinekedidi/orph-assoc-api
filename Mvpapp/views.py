@@ -92,10 +92,15 @@ def orphanApi(request, id=0):
 @csrf_exempt
 def subsidyApi(request, id=0):
     if request.method == 'GET':
-        subsidies = Subsidy.objects.all()
-        subsidies_serializer = SubsidySerializer(subsidies, many=True)
-        print(subsidies)
-        return JsonResponse(subsidies_serializer.data, safe=False)
+        if id == 0:
+            subsidies = Subsidy.objects.all()
+            subsidies_serializer = SubsidySerializer(subsidies, many=True)
+            print(subsidies)
+            return JsonResponse(subsidies_serializer.data, safe=False)
+         else:
+            sub = Subsidy.objects.get(id=id)
+            sub_serializer = SubsidySerializer(sub)
+            return JsonResponse(subsidy_serializer.data, safe=False)
 
     elif request.method == 'POST':
         subsidy_data = JSONParser().parse(request)

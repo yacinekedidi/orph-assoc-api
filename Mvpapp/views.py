@@ -97,7 +97,7 @@ def subsidyApi(request, id=0):
             subsidies_serializer = SubsidySerializer(subsidies, many=True)
             print(subsidies)
             return JsonResponse(subsidies_serializer.data, safe=False)
-         else:
+        else:
             sub = Subsidy.objects.get(id=id)
             sub_serializer = SubsidySerializer(sub)
             return JsonResponse(subsidy_serializer.data, safe=False)

@@ -100,7 +100,7 @@ def subsidyApi(request, id=0):
         else:
             sub = Subsidy.objects.get(id=id)
             sub_serializer = SubsidySerializer(sub)
-            return JsonResponse(subsidy_serializer.data, safe=False)
+            return JsonResponse(sub_serializer.data, safe=False)
 
     elif request.method == 'POST':
         subsidy_data = JSONParser().parse(request)
